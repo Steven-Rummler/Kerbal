@@ -1,0 +1,60 @@
+.load {
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    background-color: aliceblue;
+    
+    transition: 1s;
+    transition-delay: .5s;
+}
+
+.loaded {
+    height:8%;
+    opacity: .9;
+}
+
+#bob {
+    max-height: 80%;
+    height: auto;
+    width: auto;
+    margin-right: 20px;
+}
+
+.col {
+    min-width: 500px;
+    padding: 10px;
+}
+
+.top-chart {
+    min-width:800px;
+}
+
+.chart {
+    margin: 5px;
+    background-color: aliceblue;
+    opacity: .9;
+    padding:8px;
+    border-radius: 8px;
+}
+
+.title {
+    text-align: center;
+    width: auto;
+    margin:5px;
+    padding:8px;
+    border-radius: 8px;
+    background-color: aliceblue;
+    opacity: .8;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+  }
