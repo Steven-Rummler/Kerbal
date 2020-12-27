@@ -6,8 +6,7 @@ biomes = [
     ["Poles", "Lowlands", "Midlands", "Highlands", "Foothills", "Peaks", "ImpactEjecta", "ExplodiumSea",
         "AkatsukiLake", "Shallows", "CraterLake", "WesternSea", "Olympus", "Craters", "EasternSea"],  // Eve
     ["Lowlands", "Midlands", "Highlands"],  // Gilly
-    ["IceCaps", "NorthernIceShelf", "SouthernIceShelf", "Tundra", "Highlands", "Mountains", "Grasslands", "Deserts", "Badlands", "Shores", "Water", "Baikerbanur", "IslandAirfield",
-        "WoomerangLaunchSite", "KSC", "Administration", "AstronautComplex", "Crawlerway", "FlagPole", "LaunchPad", "MissionControl", "R&D", "Runway", "SPH", "TrackingStation", "VAB"],  // Kerbin
+    ["IceCaps", "NorthernIceShelf", "SouthernIceShelf", "Tundra", "Highlands", "Mountains", "Grasslands", "Deserts", "Badlands", "Shores", "Water", "KSC", "Administration", "AstronautComplex", "Crawlerway", "FlagPole", "LaunchPad", "MissionControl", "R&D", "Runway", "SPH", "TrackingStation", "VAB"],  // Kerbin
     ["Poles", "PolarLowlands", "PolarCrater", "Highlands", "HighlandCraters", "Midlands", "MidlandCraters", "Lowlands", "NortheastBasin",
         "FarsideBasin", "NorthwestCrater", "EastFarsideCrater", "Canyons", "FarsideCrater", "EastCrater", "TwinCraters", "SouthwestCrater"],  // Mun
     ["Poles", "Lowlands", "Midlands", "Highlands", "Slopes", "Flats",

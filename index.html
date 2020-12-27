@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.css"
+    />
+    <link rel="stylesheet" href="./kerbal.css" />
+
+    <script src="https://uicdn.toast.com/tui.chart/latest/tui-chart-all.min.js"></script>
+    <script src="./dataset.js"></script>
+    <script src="./lists.js"></script>
+    <script src="./process_file.js"></script>
+    <script src="./aggregate.js"></script>
+    <script src="./build_display.js"></script>
+    <script src="./display_recommender.js"></script>
+    <script src="./display_charts.js"></script>
+
+    <title>Kerbal Science Toolkit</title>
+  </head>
+
+  <body>
+    <div class="load" id="load">
+      <img id="bob" src="./kerbal.gif" />
+      <span id="label">
+        <input type="file" id="file-selector" accept=".sfs" /> <br /><br />
+        <button onclick="useExample()">Use Example File</button>
+      </span>
+    </div>
+    <div class="container-fluid">
+      <div class="row" id="recommend_list"></div>
+      <div class="row" id="top-charts"></div>
+      <div class="row" id="biome-charts"></div>
+    </div>
+
+    <a id="github" href="https://github.com/Steven-Rummler/Kerbal">GitHub</a>
+
+    <script>
+      const fileSelector = document.getElementById("file-selector");
+      fileSelector.addEventListener("change", (event) => {
+        build_display();
+        document.getElementById("label").innerHTML =
+          "<button>Extracting and Compiling Data...</button > ";
+        const fileList = event.target.files;
+        const reader = new FileReader();
+        reader.onload = function () {
+          process_file(reader);
+          display_recommender();
+          display_charts();
+          document.getElementById("load").classList.add("loaded");
+          setTimeout(function () {
+            document.getElementById("label").innerHTML =
+              '<button onclick="location.reload()" >Start Over with a New Save</button > ';
+          }, 1500);
+        };
+        reader.readAsText(fileList[0]);
+      });
+      function useExample() {
+        build_display();
+        fetch("persistent.sfs").then((response) => {
+          const reader = new FileReader();
+          reader.onload = function () {
+            process_file(reader);
+            display_recommender();
+            display_charts();
+            document.getElementById("load").classList.add("loaded");
+            setTimeout(function () {
+              document.getElementById("label").innerHTML =
+                '<button onclick="location.reload()" >Start Over with a New Save</button > ';
+            }, 1500);
+          };
+          response.blob().then((file) => {
+            reader.readAsText(file);
+          });
+        });
+      }
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

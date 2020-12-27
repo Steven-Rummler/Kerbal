@@ -117,10 +117,12 @@ for c in range(len(celestials)):
             for e in range(len(experiments)):
                 if situation_biomes[s][e] == 'b':
                     for b in range(len(biomes[c])):
-                        if (situations[s] != "SrfSplashed" or water_biomes[c][b]) and (celestials[c] != "Kerbin" or situations[s] != "SrfLanded" or micro_biomes[c][b]):
-                            f.write('{"experiment":"' + experiments[e] + '","location":"' + celestials[c] + situations[s]+biomes[c][b] +
-                                    '","sci":0,"cap":'+str(multipliers[c][s]*base_cap[e])+',"celestial":"' + celestials[c] + '","biome":"' + biomes[c][b] + '","situation":"' + situations[s] + '"},')
-                            count += 1
+                        if situations[s] != "SrfSplashed" or water_biomes[c][b]:
+                            if celestials[c] not in ["Kerbin", "Eve", "Laythe"] or situations[s] != "SrfLanded" or not water_biomes[c][b]:
+                                if celestials[c] != "Kerbin" or situations[s] == "SrfLanded" or not micro_biomes[c][b]:
+                                    f.write('{"experiment":"' + experiments[e] + '","location":"' + celestials[c] + situations[s]+biomes[c][b] +
+                                            '","sci":0,"cap":'+str(multipliers[c][s]*base_cap[e])+',"celestial":"' + celestials[c] + '","biome":"' + biomes[c][b] + '","situation":"' + situations[s] + '"},')
+                                    count += 1
                 elif situation_biomes[s][e] == 'g':
                     f.write('{"experiment":"' + experiments[e] + '","location":"' + celestials[c] + situations[s] +
                             '","sci":0,"cap":'+str(multipliers[c][s]*base_cap[e])+',"celestial":"' + celestials[c] + '","biome":"","situation":"' + situations[s] + '"},')

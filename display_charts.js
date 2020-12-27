@@ -62,6 +62,7 @@ function display_charts() {
 
     for (let c = 0; c < celestials.length; c++) {
         options = {
+            theme: 'kerbal',
             chart: {
                 height: 400,
                 width: 500
