@@ -35,26 +35,27 @@ function next_celestial() {
 }
 
 function display_recommender() {
-  let recommender = document.querySelector("#recommender");
-  let tips =
-    "<ul><li><strong>Your Personalized List of Recommendations</strong></li>";
+  document.querySelector("#recommend_title").innerText =
+    "Personalized Recommendations";
+
+  let recommendations = document.querySelector("#recommendations");
+  let tips = "";
 
   let local = local_science();
   if (local > 0) {
     tips +=
-      "<li>Not in the mood for the endless vacuum of space? Not to worry! Stay nice and comfy at home by taking some time to collect the " +
+      "<p>Not in the mood for the endless vacuum of space? Not to worry! Stay nice and comfy at home by taking some time to collect the " +
       local.toFixed() +
-      " science points still available around the Kerbal Space Center. Everywhere from the Crawlerway to the Flagpole has its own biome, so science away!</li>";
+      " science points still available around the Kerbal Space Center. Everywhere from the Crawlerway to the Flagpole has its own biome, so science away!</p>";
   }
 
   tips +=
-    "<li>Wanting to fill in some more of that Kerbin knowledge gap? Airplanes and small rockets are the perfect vehicle for a trip to Kerbin's mountains, deserts, or frozen poles!</li>";
+    "<p>Wanting to fill in some more of that Kerbin knowledge gap? Airplanes and small rockets are the perfect vehicle for a trip to Kerbin's mountains, deserts, or frozen poles!</p>";
 
   tips +=
-    "<li>Adventure awaits beyond Kerbin's skies! It looks like the next celestial body you should visit is " +
+    "<p>Adventure awaits beyond Kerbin's skies! It looks like the next celestial body you should visit is " +
     next_celestial() +
-    ". Safe travels!<li>";
+    ". Safe travels!</p>";
 
-  tips += "</ul>";
-  recommender.innerHTML = tips;
+  recommendations.innerHTML = tips;
 }

@@ -1,57 +1,60 @@
+function add_tile(title, chart) {
+  let results = document.querySelector("#results");
+  let tile = document.createElement("div");
+  tile.className = "tile";
+  tile.appendChild(title);
+  tile.appendChild(chart);
+  results.appendChild(tile);
+}
+
 function build_display() {
-    let recommend_box = document.createElement("div");
-    recommend_box.className = "col d-flex justify-content-center";
-    recommend_box.id = "recommend_box";
-    let recommender = document.createElement("div");
-    recommender.className = "title";
-    recommender.id = "recommender";
-    recommend_box.appendChild(recommender);
-    document.querySelector("#recommend_list").appendChild(recommend_box);
+  // Recommendation List
 
-    let top_row = document.getElementById("top-charts");
+  let recommend_title = document.createElement("div");
+  recommend_title.id = "recommend_title";
+  recommend_title.className = "title";
 
-    let exp_box = document.createElement("div");
-    let exp_frame = document.createElement("div");
-    let exp_title = document.createElement("div");
-    let exp_chart = document.createElement("div");
-    exp_box.className = "col d-flex justify-content-center top-chart";
-    exp_title.className = "title";
-    exp_title.innerText = "Science Progress by Experiment";
-    exp_chart.className = "chart";
-    exp_chart.id = "experiments_chart";
-    exp_frame.appendChild(exp_title);
-    exp_frame.appendChild(exp_chart);
-    exp_box.appendChild(exp_frame);
-    top_row.appendChild(exp_box);
+  let recommendations = document.createElement("div");
+  recommendations.id = "recommendations";
+  recommendations.className = "chart";
 
-    let cel_box = document.createElement("div");
-    let cel_frame = document.createElement("div");
-    let cel_title = document.createElement("div");
-    let cel_chart = document.createElement("div");
-    cel_box.className = "col d-flex justify-content-center top-chart";
-    cel_title.className = "title";
-    cel_title.innerText = "Science Progress by Celestial Body";
-    cel_chart.className = "chart";
-    cel_chart.id = "celestials_chart";
-    cel_frame.appendChild(cel_title);
-    cel_frame.appendChild(cel_chart);
-    cel_box.appendChild(cel_frame);
-    top_row.appendChild(cel_box);
+  add_tile(recommend_title, recommendations);
 
-    let biome_row = document.getElementById("biome-charts");
-    for (let c = 0; c < celestials.length; c++) {
-        let col = document.createElement("div");
-        let frame = document.createElement("div");
-        let title = document.createElement("div");
-        let chart = document.createElement("div");
-        col.className = "col d-flex justify-content-center"
-        title.className = "title"
-        title.innerText = celestials[c];
-        chart.id = "biomes_chart_" + c;
-        chart.className = "chart";
-        frame.appendChild(title);
-        frame.appendChild(chart);
-        col.appendChild(frame);
-        biome_row.appendChild(col);
-    }
+  // Experiment Chart
+
+  let exp_title = document.createElement("div");
+  exp_title.className = "title";
+  exp_title.innerText = "Science Progress by Experiment";
+
+  let exp_chart = document.createElement("div");
+  exp_chart.className = "chart";
+  exp_chart.id = "experiments_chart";
+
+  add_tile(exp_title, exp_chart);
+
+  // Celestial Bodies Chart
+
+  let cel_title = document.createElement("div");
+  cel_title.className = "title";
+  cel_title.innerText = "Science Progress by Celestial Body";
+
+  let cel_chart = document.createElement("div");
+  cel_chart.className = "chart";
+  cel_chart.id = "celestials_chart";
+
+  add_tile(cel_title, cel_chart);
+
+  // Celestial Body Charts
+
+  for (let c = 0; c < celestials.length; c++) {
+    let title = document.createElement("div");
+    title.className = "title";
+    title.innerText = celestials[c];
+
+    let chart = document.createElement("div");
+    chart.id = "biomes_chart_" + c;
+    chart.className = "chart";
+
+    add_tile(title, chart);
+  }
 }
